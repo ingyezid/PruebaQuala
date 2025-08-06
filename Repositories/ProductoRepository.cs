@@ -56,18 +56,31 @@ namespace PruebaQuala.Repositories
         /// <returns> Producto </returns>
         public Producto Create(Producto producto)
         {
-           var sqlCreate = " INSERT INTO Producto (Nombre, Descripcion, ReferenciaInterna, PrecioUnitario, Estado, UnidadMedida, FechaCreacion) " +
+
+            // opcion 1
+           //var sqlCreate = " INSERT INTO Producto (Nombre, Descripcion, ReferenciaInterna, PrecioUnitario, Estado, UnidadMedida, FechaCreacion) " +
+           //           " VALUES (@Nombre, @Descripcion, @ReferenciaInterna, @PrecioUnitario, @Estado, @UnidadMedida, @FechaCreacion); " +
+           //           " SELECT CAST(SCOPE_IDENTITY() as int) ";
+           //var id = _bd.Query<int>(sqlCreate, new {
+           //     producto.Nombre,
+           //     producto.Descripcion,
+           //     producto.ReferenciaInterna,
+           //     producto.PrecioUnitario,
+           //     producto.Estado,
+           //     producto.UnidadMedida,
+           //     producto.FechaCreacion
+           //}).Single();
+
+           // producto.CodigoProducto = id;
+           // return producto;
+
+
+            // opcion 2: otra forma de hacerlo
+
+            var sqlCreate = " INSERT INTO Producto (Nombre, Descripcion, ReferenciaInterna, PrecioUnitario, Estado, UnidadMedida, FechaCreacion) " +
                       " VALUES (@Nombre, @Descripcion, @ReferenciaInterna, @PrecioUnitario, @Estado, @UnidadMedida, @FechaCreacion); " +
                       " SELECT CAST(SCOPE_IDENTITY() as int) ";
-           var id = _bd.Query<int>(sqlCreate, new {
-                producto.Nombre,
-                producto.Descripcion,
-                producto.ReferenciaInterna,
-                producto.PrecioUnitario,
-                producto.Estado,
-                producto.UnidadMedida,
-                producto.FechaCreacion
-           }).Single();
+            var id = _bd.Query<int>(sqlCreate, producto).Single();
 
             producto.CodigoProducto = id;
             return producto;

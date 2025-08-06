@@ -1,27 +1,45 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PruebaQuala.Models;
+using PruebaQuala.Repositories;
 
 namespace PruebaQuala.Controllers
 {
-    public class HomeController : Controller
+    public class ProductoController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IProductoRepository _productoRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public ProductoController(IProductoRepository productoRepository)
         {
-            _logger = logger;
+            _productoRepository = productoRepository;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(_productoRepository.GetAll());
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Create(Producto producto)
+        {
+            if (ModelState.IsValid)
+            {
+                // Procesa la creación               
+                _productoRepository.Create(producto);
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(producto);
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

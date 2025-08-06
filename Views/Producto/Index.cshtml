@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PruebaQuala.Models.Producto>
+
+@{
+    ViewData["Title"] = "Lista de Productos";
+}
+
+<h1> Administrador de Productos </h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"> Crear Producto </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CodigoProducto)</th>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.ReferenciaInterna)</th>
+            <th>@Html.DisplayNameFor(model => model.PrecioUnitario)</th>
+            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+            <th>@Html.DisplayNameFor(model => model.UnidadMedida)</th>
+            <th>@Html.DisplayNameFor(model => model.FechaCreacion)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model == null || !Model.Any())
+        {
+            <tr>
+                <td colspan="9" class="text-center">No hay productos disponibles.</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model) 
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.CodigoProducto)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ReferenciaInterna)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PrecioUnitario)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                    <td>@Html.DisplayFor(modelItem => item.UnidadMedida)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FechaCreacion)</td>
+                    <td>
+                        <a asp-action="Update" asp-route-id="@item.CodigoProducto" class="btn btn-warning">Actualizar</a>
+                        <a asp-action="Delete" asp-route-id="@item.CodigoProducto" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

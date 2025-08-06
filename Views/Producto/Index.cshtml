@@ -10,7 +10,7 @@
     <a asp-action="Create" class="btn btn-primary"> Crear Producto </a>
 </p>
 
-<table class="table">
+<table class="table" id="contenedor1">
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(model => model.CodigoProducto)</th>
@@ -34,7 +34,7 @@
         }
         else
         {
-            @foreach (var item in Model) 
+            @foreach (var item in Model)
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.CodigoProducto)</td>
@@ -46,7 +46,7 @@
                     <td>@Html.DisplayFor(modelItem => item.UnidadMedida)</td>
                     <td>@Html.DisplayFor(modelItem => item.FechaCreacion)</td>
                     <td>
-                        <a asp-action="Update" asp-route-id="@item.CodigoProducto" class="btn btn-warning">Actualizar</a>
+                        <a asp-action="Update" asp-route-id="@item.CodigoProducto" class="btn btn-info">Actualizar</a>
                         <a asp-action="Delete" asp-route-id="@item.CodigoProducto" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>

@@ -4,7 +4,14 @@
     ViewData["Title"] = "Lista de Productos";
 }
 
+
+
 <h1> Administrador de Productos </h1>
+
+
+<h3> Bienvenido </h3>
+
+<p> Has iniciado sesión correctamente. </p>
 
 <p>
     <a asp-action="Create" class="btn btn-primary"> Crear Producto </a>
@@ -54,3 +61,12 @@
         }
     </tbody>
 </table>
+
+
+<div>
+    <form asp-action="Logout" asp-controller="Auth" method="post" class="mt-3">
+        <button type="submit" class="btn btn-danger btn-lg">
+            Cerrar Sesión
+            </button>
+    </form>
+</div>

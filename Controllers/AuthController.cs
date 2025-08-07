@@ -114,6 +114,14 @@ namespace PruebaQuala.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("AuthToken");
+
+            return RedirectToAction(nameof(Login));
+        }
+
     }
 
 }

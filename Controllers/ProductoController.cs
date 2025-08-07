@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PruebaQuala.Models;
 using PruebaQuala.Repositories;
@@ -22,6 +23,7 @@ namespace PruebaQuala.Controllers
         /// Index
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
@@ -32,6 +34,7 @@ namespace PruebaQuala.Controllers
         /// Create - Get
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -43,6 +46,7 @@ namespace PruebaQuala.Controllers
         /// </summary>
         /// <param name="producto"> Producto </param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Producto producto)
@@ -63,6 +67,7 @@ namespace PruebaQuala.Controllers
         /// </summary>
         /// <param name="id"> Codigo Producto</param>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         public IActionResult Update(int? id)
         {
@@ -76,11 +81,13 @@ namespace PruebaQuala.Controllers
             return View(producto);
         }
 
+
         /// <summary>
         /// Update - Post
         /// </summary>
         /// <param name="producto"> Producto </param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Producto producto)
@@ -107,6 +114,7 @@ namespace PruebaQuala.Controllers
         /// </summary>
         /// <param name="id"> Codigo Producto</param>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         public IActionResult Delete(int? id)
         {
@@ -121,6 +129,7 @@ namespace PruebaQuala.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

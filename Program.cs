@@ -44,13 +44,18 @@ builder.Services.AddAuthentication(option =>
     };
 });
 
-
-
 // Se añade como inyección de dependencias el repositorio
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 
-
 var app = builder.Build();
+
+app.UseStatusCodePages( async context =>
+{
+    if (context.HttpContext.Response.StatusCode == 401)
+    {
+        context.HttpContext.Response.Redirect("/Auth/Login");
+    }
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -60,6 +65,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

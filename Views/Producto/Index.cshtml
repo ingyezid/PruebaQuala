@@ -49,12 +49,14 @@
                     <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
                     <td>@Html.DisplayFor(modelItem => item.ReferenciaInterna)</td>
                     <td>@Html.DisplayFor(modelItem => item.PrecioUnitario)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                    <td>@(item.Estado ? "Activo" : "Inactivo")</td>
                     <td>@Html.DisplayFor(modelItem => item.UnidadMedida)</td>
                     <td>@Html.DisplayFor(modelItem => item.FechaCreacion)</td>
                     <td>
+                        <div class="p-2 d-flex justify-content-between">
                         <a asp-action="Update" asp-route-id="@item.CodigoProducto" class="btn btn-info">Actualizar</a>
-                        <a asp-action="Delete" asp-route-id="@item.CodigoProducto" class="btn btn-danger">Eliminar</a>
+                            <a asp-action="Delete" asp-route-id="@item.CodigoProducto" class="btn btn-danger">Eliminar</a>
+                        </div>
                     </td>
                 </tr>
             }

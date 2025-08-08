@@ -1,74 +1,71 @@
 ﻿@model PruebaQuala.Models.Producto
 
-
 @{
     ViewData["Title"] = "Actualizar Producto";
 }
 
-<h1> Actualizar Producto</h1>
 
-<div class="row" id="contenedor1">
-    <div class="col-4 offset-4">
-        <form asp-action="Update">
+<h2>Editar Producto</h2>
+<div class="row p-3" id="contenedor1">
+    <form asp-action="Update">
+        <input type="hidden" asp-for="CodigoProducto" />
 
-            <!-- Se envia el Id del producto como campo oculto -->
-            <input type="hidden" asp-for="CodigoProducto" />
-
-            <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
-
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
-                <span asp-validation-for="Descripcion" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ReferenciaInterna" class="control-label"></label>
-                <input asp-for="ReferenciaInterna" class="form-control" />
-                <span asp-validation-for="ReferenciaInterna" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="PrecioUnitario" class="control-label"></label>
-                <input asp-for="PrecioUnitario" class="form-control" />
-                <span asp-validation-for="PrecioUnitario" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" />
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UnidadMedida" class="control-label"></label>
-                <input asp-for="UnidadMedida" class="form-control" />
-                <span asp-validation-for="UnidadMedida" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="FechaCreacion" class="control-label"></label>
-                <input asp-for="FechaCreacion" type="date" class="form-control" />
-                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
-            </div>
-
-            <div class="form-group row mt-4">
-                <div class="col-6">
-                    <input type="submit" value="Actualizar Producto" class="btn btn-primary form-control" />
+        <div class="row">
+            <!-- Columna Izquierda -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Nombre" class="fw-bold"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
 
-                <div class="col-6">
-                    <a asp-action="Index" class="btn btn-warning form-control"> Volver a lista </a>
+                <div class="form-group">
+                    <label asp-for="Descripcion" class="fw-bold"></label>
+                    <textarea asp-for="Descripcion" class="form-control"></textarea>
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ReferenciaInterna" class="fw-bold"></label>
+                    <input asp-for="ReferenciaInterna" class="form-control" />
+                    <span asp-validation-for="ReferenciaInterna" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PrecioUnitario" class="fw-bold"></label>
+                    <input asp-for="PrecioUnitario" class="form-control" />
+                    <span asp-validation-for="PrecioUnitario" class="text-danger"></span>
                 </div>
             </div>
 
+            <!-- Columna Derecha -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Estado" class="fw-bold"></label>
+                    <select asp-for="Estado" class="form-control">
+                        <option value="true">Activo</option>
+                        <option value="false">Inactivo</option>
+                    </select>
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
 
-        </form>
-    </div>
+                <div class="form-group">
+                    <label asp-for="UnidadMedida" class="fw-bold"></label>
+                    <input asp-for="UnidadMedida" class="form-control" />
+                    <span asp-validation-for="UnidadMedida" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FechaCreacion" class="fw-bold"></label>
+                    <input asp-for="FechaCreacion" type="date" class="form-control" />
+                    <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group d-flex justify-content-around mt-4">
+            <input type="submit" value="Actualizar" class="btn btn-primary " />
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
 </div>

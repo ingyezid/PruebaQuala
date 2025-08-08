@@ -19,7 +19,7 @@ namespace PruebaQuala.Repositories
         /// <param name="configuration"></param>
         public ProductoRepository(IConfiguration configuration)
         {
-            _bd = new SqlConnection(configuration.GetConnectionString("ConexionSQLLocalDB"));
+            _bd = new SqlConnection(configuration.GetConnectionString("ConexionServerQualaTest"));
         }
 
 

@@ -83,7 +83,7 @@ namespace PruebaQuala.Controllers
                     HttpOnly = true,
                     Secure = _env.IsProduction(),
                     SameSite = SameSiteMode.Strict,
-                    Expires = DateTimeOffset.UtcNow.AddMinutes(30)
+                    Expires = DateTimeOffset.UtcNow.AddMinutes(20)
                 }
             );
         }
@@ -104,7 +104,7 @@ namespace PruebaQuala.Controllers
                 issuer: jwtConfig["Issuer"],
                 audience: jwtConfig["Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(30),
+                expires: DateTime.UtcNow.AddMinutes(20),
                 signingCredentials: new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256

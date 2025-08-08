@@ -27,7 +27,7 @@ namespace PruebaQuala.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(_productoRepository.GetAll());
+            return View(_productoRepository.SP_GetAll());
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace PruebaQuala.Controllers
             if (ModelState.IsValid)
             {
                 // Procesa la creación               
-                _productoRepository.Create(producto);
+                _productoRepository.SP_Create(producto);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -71,7 +71,7 @@ namespace PruebaQuala.Controllers
         [HttpGet]
         public IActionResult Update(int? id)
         {
-            var producto = _productoRepository.GetById(id.GetValueOrDefault());
+            var producto = _productoRepository.SP_GetById(id.GetValueOrDefault());
 
             if (producto == null)
             {
@@ -100,7 +100,7 @@ namespace PruebaQuala.Controllers
             if (ModelState.IsValid)
             {
                 // Procesa la actualización               
-                _productoRepository.Update(producto);
+                _productoRepository.SP_Update(producto);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -124,7 +124,7 @@ namespace PruebaQuala.Controllers
                 return NotFound();
             }
 
-            _productoRepository.Delete(id.GetValueOrDefault());
+            _productoRepository.SP_Delete(id.GetValueOrDefault());
             
             return RedirectToAction(nameof(Index));
         }

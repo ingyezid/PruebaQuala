@@ -170,7 +170,7 @@ namespace PruebaQuala.Repositories
 
             var id = _bd.Query<int>(SPCreate,
                 new
-                {
+                {                
                     @Nombre = producto.Nombre,
                     @Descripcion = producto.Descripcion,
                     @ReferenciaInterna = producto.ReferenciaInterna,
